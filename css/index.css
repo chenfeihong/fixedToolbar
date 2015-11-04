@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/*
+	公共的变量定义， 方便统一修改
+ */
+ul li a {
+  display: inline-block;
+  background-color: #ccc; }
+
+#wrapper ul li a {
+  display: inline; }
+  #wrapper ul li a:hover {
+    background: #ccc;
+    text-align: center; }
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,24 @@
+﻿
+/*
+	公共的变量定义， 方便统一修改
+ */
+$navColor: #ccc;
+
+ul li a {
+	display: inline-block;
+	background-color: $navColor;
+}
+
+#wrapper {
+	ul {
+		li {
+			a {
+				display: inline;
+				&:hover {
+					background: $navColor;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

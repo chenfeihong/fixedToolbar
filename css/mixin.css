@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/*为了兼容css3， 定义的公共函数*/
+/**
+ * 为了css3兼容， 你决定应该传递一个参数， 还是2个？ 答案是1个
+ * @param  {[type]} $origin [description]
+ * @return {[type]}         [description]
+ */
+
+/*# sourceMappingURL=mixin.css.map */

@@ -1,0 +1,88 @@
+@import "mixin";
+$toolbar-size: 52px;
+.toolbar {
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	margin-left: $toolbar-size / 2;
+}
+.toolbar-item {
+	display: block;
+	margin-top: 1px;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	position: relative;
+
+	&:hover {
+		.toolbar-icon {
+			top: - $toolbar-size;
+		}
+		.toolbar-text {
+			top: 0;
+		}
+		.toolbar-layer {
+			@include scale(1);
+			@include opacity(1);
+		}
+	}
+}
+.toolbar-btn {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	overflow: hidden;
+
+}
+.toolbar-icon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	background-color: #d0d6d9;
+	font-size: 30px;/*因为是字体图标， 所以可以像字体一样设置大小*/
+	text-align: center;
+	line-height: $toolbar-size;/*垂直居中*/
+	color: #fff;/*居然可以设置color*/
+	@include transition(top 1s);/*关键属性*/
+}
+.icon-wechat {
+	
+}
+.toolbar-text {
+	position: absolute;
+	left: 0;
+	top: $toolbar-size;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	background-color: #98a1a6;
+	font-size: 12px;/*因为是字体图标， 所以可以像字体一样设置大小*/
+	text-align: center;
+	line-height:1.2;/*每行的距离*/
+	padding-top: 12px;/**伪垂直居中*/
+	color: #fff;
+	@include transition(top 1s);/*关键属性*/
+}
+.toolbar-layer {
+	position: absolute;
+	right: $toolbar-size - 6; /*注意， 这里right， 那就是相对于右边的距离啊， 减6是因为有阴影啊*/
+	bottom: -10px;
+	@include opacity(0);
+	width: 172px;
+	@include transformOrigin(95% 95%);/*transform的基准点， 默认是中心， 这里设置为right bottom, 但是这个图片是有阴影的， 所以不要设置为最右最下， 设置为95%效果最佳， 细节啊*/
+	@include scale(0.01);
+	@include transition(all 1s);
+	background-image: url(../img/toolbar.png);
+	background-repeat: no-repeat;
+}
+.toolbar-layer-weixin {
+	height: 212px;
+	background-position: 0 0 ;
+}
+
+.toolbar-layer-app{
+	height: 194px;
+	background-position: 0 -222px ;
+}

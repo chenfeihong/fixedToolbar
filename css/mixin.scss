@@ -1,0 +1,34 @@
+/*为了兼容css3， 定义的公共函数*/
+@mixin transition($transt) {
+	-webkit-transition: $transt;
+	-moz-transition: $transt;
+	-ms-transition: $transt;
+	-o-transition: $transt;/*opera*/
+	transition: $transt;
+}
+
+@mixin scale($scale) {
+	-webkit-transform: scale($scale);
+	-moz-transform: scale($scale);
+	-ms-transform: scale($scale);
+	-o-transform: scale($scale);
+	transform: scale($scale);
+}
+
+/**
+ * 为了css3兼容， 你决定应该传递一个参数， 还是2个？ 答案是1个
+ * @param  {[type]} $origin [description]
+ * @return {[type]}         [description]
+ */
+@mixin transformOrigin($origin) {
+	-webkit-transform-origin: $origin;
+	-moz-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	transform-origin: $origin;
+}
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	filter: alpha(opacity=$opacity * 100);/*兼容IE*/
+}

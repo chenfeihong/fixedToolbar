@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用伪类实现fixbar</title>
+	<link rel="stylesheet" type="text/css" href="css/style2.css">
+	<!--
+	思路： 我们参照使用字体图标的思路，在a的最后用:after 加上一个二维码图层
+	在span的:before加上字体图标， 在span的:after加上一个字体文字， 完美
+	为什么要使用伪类来做呢？
+	1. 可以装逼
+	2. 简化了html标签结构
+	3. 使用了图标字体， 那就意味着性能提升, 比如移动端就可以这么写， 但是不兼容iE6
+	缺点：
+	css 写的更复杂了， :before  :after
+
+	-->
+	<script type="text/javascript" src="libs/require.js" data-main="js/main"></script>
+</head>
+<body>
+	<div class="toolbar">
+	<a href="javascript:void(0)" class="toolbar-item toolbar-weixin">
+		<span class="toolbar-btn"></span>
+	</a>
+	<a href="javascript:void(0)" class="toolbar-item toolbar-feedback">
+		<span class="toolbar-btn"></span>
+	</a>
+	<a href="javascript:void(0)" class="toolbar-item toolbar-app">
+		<span class="toolbar-btn"></span>
+	</a>
+	<a id="backTop" href="javascript:void(0)" class="toolbar-item toolbar-top">
+		<span class="toolbar-btn"></span>
+	</a>
+	</div>
+
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+	<p>123456</p>
+</body>
+</html>

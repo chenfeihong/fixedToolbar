@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/*为了兼容css3， 定义的公共函数*/
+/**
+ * 为了css3兼容， 你决定应该传递一个参数， 还是2个？ 答案是1个
+ * @param  {[type]} $origin [description]
+ * @return {[type]}         [description]
+ */
+/*整个toolbar的宽度*/
+/*提取相同的属性, 减少冗余代码， 好吧， 这个俺脚的完全没有必要*/
+.toolbar-item, .toolbar-layer {
+  background-image: url(../img/toolbar.png);
+  background-repeat: no-repeat; }
+
+/*定义一个函数， 在下面用到地方会调用哦, 用来设置原始位置和hover时 背景图片的不同, 通过参数传递*/
+.toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 5px;
+  margin-left: -26px; }
+
+.toolbar-item {
+  position: relative;
+  display: block;
+  /**因为是a标签，所以要设置block*/
+  width: 52px;
+  height: 52px;
+  margin-top: 1px;
+  -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  -ms-transition: background-position 1s;
+  -o-transition: background-position 1s;
+  /*opera*/
+  transition: background-position 1s;
+  /*添加位置渐变哦*/ }
+  .toolbar-item:hover .toolbar-layer {
+    /*当hover toolbar-item时， 的toolbar-layer样式, 这个地方关键*/
+    opacity: 1;
+    filter: alpha(opacity=100);
+    /*兼容IE*/
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
+
+.toolbar-weixin {
+  background-position: 0 -798px; }
+  .toolbar-weixin:hover {
+    background-position: 0 -860px; }
+  .toolbar-weixin .toolbar-layer {
+    background-position: 0 0;
+    height: 212px; }
+
+.toolbar-feedback {
+  background-position: 0 -426px; }
+  .toolbar-feedback:hover {
+    background-position: 0 -488px; }
+
+.toolbar-app {
+  background-position: 0 -550px; }
+  .toolbar-app:hover {
+    background-position: 0 -612px; }
+  .toolbar-app .toolbar-layer {
+    background-position: 0 -222px;
+    height: 194px; }
+
+.toolbar-top {
+  background-position: 0 -674px; }
+  .toolbar-top:hover {
+    background-position: 0 -736px; }
+
+.toolbar-layer {
+  position: absolute;
+  right: 46px;
+  bottom: -10px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  /*兼容IE*/
+  width: 172px;
+  -webkit-transform-origin: 95% 95%;
+  -moz-transform-origin: 95% 95%;
+  -ms-transform-origin: 95% 95%;
+  -o-transform-origin: 95% 95%;
+  transform-origin: 95% 95%;
+  /*transform的基准点， 默认是中心， 这里设置为right bottom, 但是这个图片是有阴影的， 所以不要设置为最右最下， 设置为95%效果最佳， 细节啊*/
+  -webkit-transform: scale(0.01);
+  -moz-transform: scale(0.01);
+  -ms-transform: scale(0.01);
+  -o-transform: scale(0.01);
+  transform: scale(0.01);
+  /*关键属性， css3的transform ， 变为原始大小的0.01那么就看不到了*/
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  /*opera*/
+  transition: all 1s;
+  /*为什么是all呢， 因为我们不但有位置的变化，还有透明度的变化， 所以用all*/ }

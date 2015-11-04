@@ -1,0 +1,78 @@
+@import "mixin";
+$toolbar-size: 52px;/*整个toolbar的宽度*/
+
+/*提取相同的属性, 减少冗余代码， 好吧， 这个俺脚的完全没有必要*/
+.toolbar-item, .toolbar-layer{
+	background-image: url(../img/toolbar.png);
+	background-repeat: no-repeat;
+}
+
+/*定义一个函数， 在下面用到地方会调用哦, 用来设置原始位置和hover时 背景图片的不同, 通过参数传递*/
+@mixin toolbar-item($pos, $hoverPos) {
+	background-position: 0  $pos;
+	&:hover {
+		background-position: 0 $hoverPos;
+	}
+}
+
+.toolbar{
+	position: fixed;
+	left: 50%;
+	bottom: 5px;
+	margin-left: -$toolbar-size / 2;
+}
+.toolbar-item{
+	position: relative;
+	display: block;/**因为是a标签，所以要设置block*/
+	width: $toolbar-size;
+	height: $toolbar-size;
+	margin-top: 1px;
+	
+	@include transition(background-position 1s);/*添加位置渐变哦*/
+
+
+	&:hover {
+		.toolbar-layer {/*当hover toolbar-item时， 的toolbar-layer样式, 这个地方关键*/
+			@include opacity(1);
+			@include scale(1);
+		}
+	}
+}
+.toolbar-weixin{
+	
+	@include toolbar-item(-798px, -860px);
+	.toolbar-layer {
+		background-position: 0 0 ;
+		height: 212px;
+	}
+}
+.toolbar-feedback{
+	@include toolbar-item(-426px, -488px);
+}
+.toolbar-app{
+	 
+	@include toolbar-item(-550px, -612px);
+	.toolbar-layer {
+		background-position: 0 -222px ;
+		height: 194px;
+	}
+}
+.toolbar-top{
+	 
+	@include toolbar-item(-674px, -736px);
+}
+
+.toolbar-layer {
+	position: absolute;
+	right: $toolbar-size - 6px;
+	bottom: -10px;
+	@include opacity(0);
+	
+	width: 172px;
+	@include transformOrigin(95% 95%);/*transform的基准点， 默认是中心， 这里设置为right bottom, 但是这个图片是有阴影的， 所以不要设置为最右最下， 设置为95%效果最佳， 细节啊*/
+
+	@include scale(0.01);/*关键属性， css3的transform ， 变为原始大小的0.01那么就看不到了*/
+
+	@include transition(all 1s); /*为什么是all呢， 因为我们不但有位置的变化，还有透明度的变化， 所以用all*/
+	
+}

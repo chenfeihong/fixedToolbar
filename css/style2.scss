@@ -1,0 +1,215 @@
+
+/*这个的多个url， 是为了做多浏览器的图标字体的兼容*/
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?j3nl3j');
+	src:url('fonts/icomoon.eot?j3nl3j#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?j3nl3j') format('truetype'),
+		url('fonts/icomoon.woff?j3nl3j') format('woff'),
+		url('fonts/icomoon.svg?j3nl3j#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*不同字体图标的公共样式*/
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*不同字体图标的私有样式*/
+.icon-wechat:before {
+	content: "\e900";
+}
+.icon-file-zip:before {
+	content: "\e901";
+}
+.icon-mobile:before {
+	content: "\e902";
+}
+.icon-upload3:before {
+	content: "\e903";
+}
+
+@import "toolbar1";
+
+
+@import "mixin";
+$toolbar-size: 52px;
+.toolbar {
+	position: fixed;
+	left: 50%;
+	bottom: 5px;
+	margin-left: - $toolbar-size / 2;
+	
+}
+
+.toolbar-item {
+	position: relative;
+	display: block;
+	width: $toolbar-size;
+	height: $toolbar-size;
+	margin-top: 1px;
+
+	/*这里是二维码的公共属性哦*/
+	&:after {
+		content: "";
+		position: absolute;
+		/*fuck, 为什么这里不是left: -6, 把俺搞晕了*/
+		/*right 相对于右边的距离*/
+		right: $toolbar-size - 6;
+		bottom: -10px;
+		width: 172px;/*为什么没有指定height， 因为height的值不同啊， 不是公共属性啊*/
+		background-image: url(../img/toolbar_img.png);
+		background-repeat: no-repeat;
+		@include opacity(0);
+		@include transformOrigin(95% 95%);
+		@include scale(0.01);
+		@include transition(all 1s);
+	}
+	&:hover {
+		&:after {
+			@include opacity(1);
+			@include scale(1);
+		}
+
+		/*字体图标的hover*/
+		.toolbar-btn {
+			&:before {
+				top: - $toolbar-size;
+			}
+			&:after {
+				top: 0;
+			}
+		}
+	}
+}
+/*微信二维码的私有样式, toolbar-weixin 是和toolbar-item是同一级的， 理清了层次，才能玩好after before*/
+.toolbar-weixin {
+	&:after {
+		content: "";
+		height: 212px;
+		background-position: 0 0;
+	}
+	.toolbar-btn {
+		/*微信字体图标私有样式*/
+		/* &:before {
+			content : "\e900";
+		} */
+		@extend .icon-wechat;/*这么写意思是 继承.icon-wechat的样式，减少代码冗余啊*/
+		&:after {
+			content :"公众\A账号";
+		}
+	}
+}
+.toolbar-btn {
+	/* position: absolute;
+	left: 0;
+	top: 0;
+	width: $toolbar-size;
+	height: $toolbar-size; 这些都是冗余代码， 我们来重构下*/
+
+	&, &:before, &:after {
+		position: absolute;
+		left: 0;
+		width: $toolbar-size;
+		height: $toolbar-size;
+	}
+	top: 0;
+	overflow: hidden;
+
+	/* font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?j3nl3j');
+	src:url('fonts/icomoon.eot?j3nl3j#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?j3nl3j') format('truetype'),
+		url('fonts/icomoon.woff?j3nl3j') format('woff'),
+		url('fonts/icomoon.svg?j3nl3j#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal; 这些是字体公共样式， 我们来使用继承extend*/
+	@extend [class^="icon-"];
+
+	/*font icon*/
+	&:before {
+		content: "";
+		/* position: absolute;
+		left: 0;
+		
+		width: $toolbar-size;
+		height: $toolbar-size; */
+		top: 0;
+		background-color: #999;
+		font-size: 20px;
+		color: #fff;
+		text-align: center;
+		line-height: $toolbar-size;
+		@include transition(top 1s);
+	}
+	/*文字*/
+	&:after {
+		content: "";
+		/* position: absolute;
+		left: 0;
+		width: $toolbar-size;
+		height: $toolbar-size; */
+		top: $toolbar-size;
+		background-color: #98a1a6;
+		font-size: 12px;
+		color: #fff;
+		white-space: pre;/*为了换行*/
+		text-align: center;
+		/*line-height: $toolbar-size;这里再用lineheight会有问题， 因为这是一行文字， 要做2行显示, 改用padding*/
+		padding-top: 12px;
+		@include transition(top 1s);
+	}
+}
+.toolbar-feedback {
+	.toolbar-btn {
+		/*微信字体图标私有样式*/
+		/* &:before {
+			content : "\e901";
+		} */
+		@extend .icon-file-zip;
+		&:after {
+			content :"意见\A反馈";
+		}
+	}
+}
+.toolbar-app {
+	/*app 二维码*/
+	&:after {
+		content: "";
+		height: 194px;
+		background-position: 0 -222px;
+	}
+	.toolbar-btn {
+		/*微信字体图标私有样式*/
+		/* &:before {
+			content : "\e902";
+		} */
+		@extend .icon-mobile;
+		&:after {
+			content :"app\A下载";
+		}
+	}
+}
+.toolbar-top {
+	.toolbar-btn {
+		/*微信字体图标私有样式*/
+		/* &:before {
+			content : "\e903";
+		} */
+		@extend .icon-upload3;
+		&:after {
+			content :"返回\A顶部";
+		}
+	}
+}

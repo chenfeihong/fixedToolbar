@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>底部工具栏-使用字体图标的方式</title>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+	<!--使用字体图标的优缺点
+		避免了图片的使用，节省了带宽， 且修改宽度方便
+		html结构较复杂
+		不兼容IE6，7， 只能 在IE8兼容图标字体
+	-->
+</head>
+<body>
+	<div class="toolbar">
+		<a href="#" class="toolbar-item">
+
+			<span class="toolbar-btn">
+				<i class="toolbar-icon icon-wechat"></i>
+				<span class="toolbar-text">公众<br />账号</span>
+			</span>
+			<!--toolbar-layer 就是hover之后出现的那个二维码 -->
+			<span class="toolbar-layer toolbar-layer-weixin"></span>
+		</a>
+		<a href="#" class="toolbar-item">
+
+			<span class="toolbar-btn">
+				<i class="toolbar-icon icon-file-zip"></i>
+				<span class="toolbar-text">意见<br />反馈</span>
+			</span>
+			
+		</a>
+		<a href="#" class="toolbar-item">
+
+			<span class="toolbar-btn">
+				<i class="toolbar-icon icon-mobile"></i>
+				<span class="toolbar-text">app<br />下载</span>
+			</span>
+			<!--toolbar-layer 就是hover之后出现的那个二维码 -->
+			<span class="toolbar-layer toolbar-layer-app"></span>
+		</a>
+		<a href="#" class="toolbar-item">
+
+			<span class="toolbar-btn">
+				<i class="toolbar-icon icon-upload3"></i>
+				<span class="toolbar-text">返回<br />顶部</span>
+			</span>
+		</a>
+		
+
+	</div>
+</body>
+</html>
